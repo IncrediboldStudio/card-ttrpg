@@ -1,7 +1,7 @@
 @tool
-extends Resource
-
 class_name Card
+
+extends Resource
 
 enum ActionType{
     MOVE,
@@ -16,7 +16,7 @@ enum Origin{
     TARGET,
 }
 
-@export var action_type := ActionType.MOVE:
+@export var action_type: ActionType = ActionType.MOVE:
     set(value):
         action_type = value
         notify_property_list_changed()
@@ -26,7 +26,7 @@ enum Origin{
 @export var area : int
 @export var dices : Array[Dices]
 
-func _validate_property(property: Dictionary):
+func _validate_property(property: Dictionary) -> void:
     if property.name in ["origin", "area", "dices"] and action_type == ActionType.MOVE:
         property.usage = PROPERTY_USAGE_NO_EDITOR
     if property.name in ["area", "dices"] and action_type == ActionType.INTERACT:

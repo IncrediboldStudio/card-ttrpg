@@ -25,6 +25,7 @@ SceneLoader="*res://src/system/scene_loader.gd"
 SfxManager="*res://src/system/game_settings/audio/sfx_manager.gd"
 MusicManager="*res://src/system/game_settings/audio/music_manager.gd"
 KeyPersistence="*res://src/system/key_persistence.gd"
+CardManager="*res://src/gameplay/Card/card_manager.gd"
 
 [debug]
 

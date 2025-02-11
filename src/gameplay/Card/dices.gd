@@ -1,7 +1,7 @@
 @tool
-extends Resource
-
 class_name Dices
+
+extends Resource
 
 enum Type{
     TYPELESS,
