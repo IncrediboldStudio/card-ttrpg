@@ -6,6 +6,7 @@
  - [ ] The changes have been tested on the [Github Pages](https://incrediboldstudio.github.io/card-ttrpg/)
  - [ ] Changes in scenes have been saved correctly
  - [ ] The code follows the [style guide](https://github.com/IncrediboldStudio/card-ttrpg/blob/main/docs/style_guide.md)
+ - [ ] The formatting and linting results have been verified in the workflow run
  - [ ] The corresponding changes in the documentation have been made
 
  ## Reviewer Checklist:
