@@ -1,20 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2mkli0c2xlid"]
+[gd_scene load_steps=3 format=3 uid="uid://c2mkli0c2xlid"]
 
 [ext_resource type="Script" path="res://src/ui/components/card/card.gd" id="1_kh75g"]
 
-[node name="Card" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yujfb"]
+size = Vector2(205, 274)
+
+[node name="Card" type="Area2D"]
 script = ExtResource("1_kh75g")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -140)
+shape = SubResource("RectangleShape2D_yujfb")
+
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 205.0
-offset_bottom = 275.0
+offset_left = -101.0
+offset_top = -277.0
+offset_right = 104.0
+offset_bottom = -2.0
+mouse_filter = 2
 
 [node name="Title" type="Label" parent="Background"]
 layout_mode = 1
@@ -44,3 +47,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Description"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

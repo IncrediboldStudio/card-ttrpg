@@ -1,6 +1,6 @@
-extends Control
-
 class_name Card
+
+extends Area2D
 
 @export var data: CardData
 @export var title_path: String = "Background/Title"
@@ -11,12 +11,14 @@ class_name Card
 
 func _ready() -> void:
     set_text_from_data()
-    pass # Replace with function body.
 
+func _on_mouse_entered() -> void:
+    scale = Vector2(1.05, 1.05)
+    position += Vector2(0, -200)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass
+func _on_mouse_exited() -> void:
+    scale = Vector2(1.05, 1.05)
+    position += Vector2(0, 200)
     
 func set_text_from_data() -> void:
     title.text = data.name
