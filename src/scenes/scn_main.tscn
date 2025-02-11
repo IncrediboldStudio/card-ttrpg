@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://3n362m40oh0"]
+[gd_scene load_steps=3 format=3 uid="uid://3n362m40oh0"]
+
+[ext_resource type="PackedScene" uid="uid://c2mkli0c2xlid" path="res://src/ui/components/card/card.tscn" id="1_l2xxp"]
+[ext_resource type="Resource" uid="uid://dy70eqljyve21" path="res://src/gameplay/Card/Data/example_card_data.tres" id="2_rbehd"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Card" parent="." instance=ExtResource("1_l2xxp")]
+data = ExtResource("2_rbehd")

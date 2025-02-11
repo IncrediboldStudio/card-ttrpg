@@ -1,5 +1,5 @@
 @tool
-class_name Card
+class_name CardData
 
 extends Resource
 
@@ -15,6 +15,8 @@ enum Origin{
     USER,
     TARGET,
 }
+
+@export var name : String
 
 @export var action_type: ActionType = ActionType.MOVE:
     set(value):

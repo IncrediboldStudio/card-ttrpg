@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://dy70eqljyve21"]
+
+[ext_resource type="Script" path="res://src/gameplay/Card/dices.gd" id="1_ra1w0"]
+[ext_resource type="Script" path="res://src/gameplay/Card/card_data.gd" id="2_lkw3b"]
+
+[sub_resource type="Resource" id="Resource_ryaqp"]
+script = ExtResource("1_ra1w0")
+dices = 4
+count = 6
+type = 3
+
+[sub_resource type="Resource" id="Resource_nq7ww"]
+script = ExtResource("1_ra1w0")
+dices = 8
+count = 2
+type = 5
+
+[sub_resource type="Resource" id="Resource_u8sl7"]
+script = ExtResource("1_ra1w0")
+dices = 10
+count = 1
+type = 7
+
+[resource]
+script = ExtResource("2_lkw3b")
+name = "Example"
+action_type = 2
+origin = 1
+range = 5
+area = 3
+dices = Array[ExtResource("1_ra1w0")]([SubResource("Resource_ryaqp"), SubResource("Resource_nq7ww"), SubResource("Resource_u8sl7")])
