@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="godot-starter-template"
+config/name="card-ttrpg"
 run/main_scene="res://src/scenes/scn_start_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -25,6 +25,7 @@ SceneLoader="*res://src/system/scene_loader.gd"
 SfxManager="*res://src/system/game_settings/audio/sfx_manager.gd"
 MusicManager="*res://src/system/game_settings/audio/music_manager.gd"
 KeyPersistence="*res://src/system/key_persistence.gd"
+CardManager="*res://src/gameplay/Card/card_manager.gd"
 
 [debug]
 
