@@ -7,6 +7,8 @@ size = Vector2(205, 274)
 
 [node name="Card" type="Area2D"]
 script = ExtResource("1_kh75g")
+title_path = "Background/Foreground/Title"
+description_path = "Background/Foreground/Description"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -140)
@@ -18,8 +20,25 @@ offset_top = -277.0
 offset_right = 104.0
 offset_bottom = -2.0
 mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Title" type="Label" parent="Background"]
+[node name="Foreground" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -131.5
+offset_right = 107.5
+offset_bottom = 143.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.95, 0.95)
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Background/Foreground"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -33,16 +52,16 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Title"
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="Background"]
+[node name="Description" type="Label" parent="Background/Foreground"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
+offset_left = -35.0
 offset_top = -23.0
-offset_right = 20.0
+offset_right = 35.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
