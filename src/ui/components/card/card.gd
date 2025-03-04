@@ -18,6 +18,7 @@ enum State{
 
 var current_state: State = State.NONE
 var original_position: Vector2
+var tween: Tween
 
 func _ready() -> void:
     original_position = position
@@ -57,18 +58,26 @@ func set_text_from_data() -> void:
     description.text = text
 
 func set_state(new_state: State) -> void:
+    if tween:
+        tween.kill()
+    tween = get_tree().create_tween()
+    
     match new_state:
         State.NONE:
-            position = original_position
-            scale = Vector2(1, 1)
+            tween.tween_property(self, "position", original_position, 0.2)
+            tween.tween_property(self, "scale", Vector2(1, 1), 0.2)
             z_index = 0
         State.HOVERED:
-            scale = Vector2(1.05, 1.05)
+            tween.tween_property(self, "scale", Vector2(1.05, 1.05), 0.2)
             z_index = 1
         State.SELECTED:
-            scale = Vector2(1.2, 1.2)
-            
+            tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.2)
+    
     current_state = new_state
     
 func follow_mouse() -> void:
-    position = get_global_mouse_position()
+    if tween:
+        tween.kill()
+    tween = get_tree().create_tween()
+    tween.tween_property(self, "position", get_global_mouse_position(), 0.2)
+    tween.tween_callback(self.queue_free)
