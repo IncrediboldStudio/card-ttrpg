@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://cuer1l5ythyso"]
+
+[ext_resource type="Script" path="res://src/gameplay/Card/dices.gd" id="1_0dd72"]
+[ext_resource type="Script" path="res://src/gameplay/Card/card_data.gd" id="2_b5xu3"]
+
+[resource]
+script = ExtResource("2_b5xu3")
+name = "Interact"
+action_type = 1
+origin = 0
+range = 0
+area = 0
+dices = Array[ExtResource("1_0dd72")]([])

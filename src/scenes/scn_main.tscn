@@ -1,10 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://3n362m40oh0"]
+[gd_scene load_steps=6 format=3 uid="uid://3n362m40oh0"]
 
 [ext_resource type="PackedScene" uid="uid://c2mkli0c2xlid" path="res://src/ui/components/card/card.tscn" id="1_l2xxp"]
-[ext_resource type="Resource" uid="uid://dy70eqljyve21" path="res://src/gameplay/Card/Data/example_card_data.tres" id="2_rbehd"]
+[ext_resource type="Resource" uid="uid://bokfmjq66112e" path="res://src/gameplay/Card/Data/move.tres" id="2_kl4lg"]
+[ext_resource type="Resource" uid="uid://ctp1gct4h5gwj" path="res://src/gameplay/Card/Data/strike.tres" id="3_70yro"]
+[ext_resource type="Resource" uid="uid://bod04htit74ld" path="res://src/gameplay/Card/Data/fireball.tres" id="4_5icgt"]
+[ext_resource type="Resource" uid="uid://cuer1l5ythyso" path="res://src/gameplay/Card/Data/interact.tres" id="5_3vhmk"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Card" parent="." instance=ExtResource("1_l2xxp")]
-position = Vector2(555, 915)
-data = ExtResource("2_rbehd")
+position = Vector2(339, 695)
+data = ExtResource("2_kl4lg")
+
+[node name="Card2" parent="." instance=ExtResource("1_l2xxp")]
+position = Vector2(492, 702)
+data = ExtResource("3_70yro")
+
+[node name="Card3" parent="." instance=ExtResource("1_l2xxp")]
+position = Vector2(647, 693)
+data = ExtResource("4_5icgt")
+
+[node name="Card4" parent="." instance=ExtResource("1_l2xxp")]
+position = Vector2(781, 705)
+data = ExtResource("5_3vhmk")

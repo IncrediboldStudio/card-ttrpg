@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bokfmjq66112e"]
+
+[ext_resource type="Script" path="res://src/gameplay/Card/dices.gd" id="1_tkx4j"]
+[ext_resource type="Script" path="res://src/gameplay/Card/card_data.gd" id="2_p2ki6"]
+
+[resource]
+script = ExtResource("2_p2ki6")
+name = "Move"
+action_type = 0
+origin = 1
+range = 0
+area = 0
+dices = Array[ExtResource("1_tkx4j")]([])
