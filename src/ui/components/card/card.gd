@@ -7,6 +7,7 @@ enum State{
     HOVERED,
     GRABBED,
     SELECTED,
+    RESETTING,
 }
 
 @export var data: CardData
@@ -64,20 +65,27 @@ func set_state(new_state: State) -> void:
     
     match new_state:
         State.NONE:
-            tween.tween_property(self, "position", original_position, 0.2)
-            tween.tween_property(self, "scale", Vector2(1, 1), 0.2)
+            tween.tween_property(self, "scale", Vector2(1, 1), 0.05)
             z_index = 0
         State.HOVERED:
-            tween.tween_property(self, "scale", Vector2(1.05, 1.05), 0.2)
+            tween.tween_property(self, "scale", Vector2(1.05, 1.05), 0.05)
             z_index = 1
         State.SELECTED:
-            tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.2)
+            tween.tween_property(self, "position", Vector2(150, 300), 0.15)
+            tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.05)
+        State.RESETTING:
+            tween.tween_property(self, "position", original_position, 0.15)
+            tween.tween_property(self, "scale", Vector2(1, 1), 0.15)
+            tween.tween_callback(on_reset_complete)
+        
     
     current_state = new_state
     
 func follow_mouse() -> void:
     if tween:
         tween.kill()
-    tween = get_tree().create_tween()
-    tween.tween_property(self, "position", get_global_mouse_position(), 0.2)
-    tween.tween_callback(self.queue_free)
+        
+    position = get_global_mouse_position()
+    
+func on_reset_complete() -> void:
+    set_state(State.NONE)

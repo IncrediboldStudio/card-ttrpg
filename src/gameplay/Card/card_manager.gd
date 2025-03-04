@@ -18,6 +18,8 @@ func _ready() -> void:
     
 func _process(delta: float) -> void:
     if current_card == null:
+        if hovered_cards.size() > 0:
+            update_hovered_card()
         return
         
     match current_card.current_state:
@@ -30,7 +32,7 @@ func update_hovered_card() -> void:
     if hovered_cards.is_empty():
         return
     elif hovered_cards.size() == 1:
-        if current_card == null:
+        if current_card == null and hovered_cards[0].current_state == Card.State.NONE:
             set_hovered_card(hovered_cards[0])
         return
     
@@ -42,7 +44,7 @@ func update_hovered_card() -> void:
         if distance < shortest_distance:
             shortest_distance = distance
             new_card = card
-    if new_card == current_card:
+    if new_card == current_card or new_card.current_state != Card.State.NONE:
         return
     
     if current_card != null:
@@ -92,12 +94,11 @@ func release_card(card: Card) -> void:
     
     var distance: float = card.original_position.y - card.position.y
     if distance < 200:
-        card.set_state(Card.State.NONE)
+        card.set_state(Card.State.RESETTING)
     else:
         if selected_card != null:
-            selected_card.set_state(Card.State.NONE)
+            selected_card.set_state(Card.State.RESETTING)
         card.set_state(Card.State.SELECTED)
-        card.position = Vector2(150, 300)
         selected_card = card
         hovered_cards.erase(card)
         
