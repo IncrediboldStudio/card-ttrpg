@@ -1,10 +1,20 @@
-extends Node
+class_name CardManager
+
+extends Control
 
 signal on_start_hover_card(card : Card)
 signal on_end_hover_card(card : Card)
 signal on_grab_card(card : Card)
 signal on_release_card(card : Card)
 signal on_play_card(card : CardData)
+
+@export var hand_position_path: String = "HandPosition"
+@export var select_position_path: String = "SelectPosition"
+
+@onready var hand_position: Control = get_node(hand_position_path)
+@onready var select_position: Control = get_node(select_position_path)
+
+const card_scene: PackedScene = preload("res://src/ui/components/card/card.tscn")
 
 var current_card: Card
 var selected_card: Card
@@ -15,6 +25,21 @@ func _ready() -> void:
     on_end_hover_card.connect(end_hover_card)
     on_grab_card.connect(grab_card)
     on_release_card.connect(release_card)
+    
+func fill_hand(cards_data: Array[CardData]) -> void:
+    var card_count: int = cards_data.size()
+    var current_card: int = 0
+
+    for data: CardData in cards_data:
+        var card: Card = card_scene.instantiate()
+        var collision: CollisionShape2D = card.get_node("CollisionShape2D")
+        var shape: Shape2D = collision.get_shape()
+        var card_width: float = shape.get_rect().size.x
+        card.position = hand_position.position - Vector2(card_width * 1.5, 0) + Vector2(card_width * current_card, 0)
+        card.bind(data, self)
+        add_child(card)
+        current_card += 1
+        
     
 func _process(delta: float) -> void:
     if current_card == null:

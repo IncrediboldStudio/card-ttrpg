@@ -10,26 +10,31 @@ enum State{
     RESETTING,
 }
 
-@export var data: CardData
-@export var title_path: String = "Background/Title"
-@export var description_path: String = "Background/Description"
+const title_path: String = "Background/Foreground/Title"
+const description_path: String = "Background/Foreground/Description"
 
-@onready var title: Label = get_node(title_path)
-@onready var description: Label = get_node(description_path)
+var title: Label
+var description: Label
 
 var current_state: State = State.NONE
+var card_manager: CardManager
+var data: CardData
 var original_position: Vector2
 var tween: Tween
 
-func _ready() -> void:
-    original_position = position
+func bind(card_data: CardData, manager: CardManager) -> void:
+    data = card_data
+    title = get_node(title_path)
+    description = get_node(description_path)
     set_text_from_data()
+    original_position = position
+    card_manager = manager
 
 func _on_mouse_entered() -> void:
-    CardManager.on_start_hover_card.emit(self)
+    card_manager.on_start_hover_card.emit(self)
 
 func _on_mouse_exited() -> void:
-    CardManager.on_end_hover_card.emit(self)
+    card_manager.on_end_hover_card.emit(self)
     
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
     if event is not InputEventMouseButton:
@@ -38,10 +43,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
     match current_state:
         State.HOVERED:
             if event.is_pressed():
-                CardManager.on_grab_card.emit(self)
+                card_manager.on_grab_card.emit(self)
         State.GRABBED:
             if event.is_released():
-                CardManager.on_release_card.emit(self)
+                card_manager.on_release_card.emit(self)
     
 func set_text_from_data() -> void:
     title.text = data.name

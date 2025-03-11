@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://br276xejvief2"]
+
+[ext_resource type="Script" path="res://src/ui/components/card/card_manager.gd" id="1_yu8ps"]
+
+[node name="CardManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yu8ps")
+
+[node name="HandPosition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 536.0
+offset_top = 647.0
+offset_right = 576.0
+offset_bottom = 687.0
+
+[node name="SelectPosition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 140.0
+offset_top = 331.0
+offset_right = 180.0
+offset_bottom = 371.0

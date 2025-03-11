@@ -1,25 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://3n362m40oh0"]
+[gd_scene load_steps=8 format=3 uid="uid://3n362m40oh0"]
 
-[ext_resource type="PackedScene" uid="uid://c2mkli0c2xlid" path="res://src/ui/components/card/card.tscn" id="1_l2xxp"]
+[ext_resource type="PackedScene" uid="uid://br276xejvief2" path="res://src/ui/components/card/card_manager.tscn" id="1_su2nb"]
+[ext_resource type="Script" path="res://src/gameplay/Card/character.gd" id="2_i7brg"]
 [ext_resource type="Resource" uid="uid://bokfmjq66112e" path="res://src/gameplay/Card/Data/move.tres" id="2_kl4lg"]
 [ext_resource type="Resource" uid="uid://ctp1gct4h5gwj" path="res://src/gameplay/Card/Data/strike.tres" id="3_70yro"]
+[ext_resource type="Script" path="res://src/gameplay/Card/card_data.gd" id="3_ja7nb"]
 [ext_resource type="Resource" uid="uid://bod04htit74ld" path="res://src/gameplay/Card/Data/fireball.tres" id="4_5icgt"]
 [ext_resource type="Resource" uid="uid://cuer1l5ythyso" path="res://src/gameplay/Card/Data/interact.tres" id="5_3vhmk"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Card" parent="." instance=ExtResource("1_l2xxp")]
-position = Vector2(339, 695)
-data = ExtResource("2_kl4lg")
+[node name="CardManager" parent="." instance=ExtResource("1_su2nb")]
 
-[node name="Card2" parent="." instance=ExtResource("1_l2xxp")]
-position = Vector2(492, 702)
-data = ExtResource("3_70yro")
-
-[node name="Card3" parent="." instance=ExtResource("1_l2xxp")]
-position = Vector2(647, 693)
-data = ExtResource("4_5icgt")
-
-[node name="Card4" parent="." instance=ExtResource("1_l2xxp")]
-position = Vector2(781, 705)
-data = ExtResource("5_3vhmk")
+[node name="Player" type="Control" parent="." node_paths=PackedStringArray("manager")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_i7brg")
+card_deck = Array[ExtResource("3_ja7nb")]([ExtResource("4_5icgt"), ExtResource("2_kl4lg"), ExtResource("5_3vhmk"), ExtResource("3_70yro")])
+manager = NodePath("../CardManager")
