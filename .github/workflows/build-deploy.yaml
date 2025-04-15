@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GODOT_VERSION: '4.3'
+  GODOT_VERSION: '4.4.1'
   GODOT_RELEASE: stable
 
 permissions:
@@ -82,6 +82,10 @@ jobs:
     name: Deploy on Github Pages
     needs: export
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      packages: read
+      id-token: write
     # runs-on: self-hosted
     steps: 
       - name: Download export artifacts
